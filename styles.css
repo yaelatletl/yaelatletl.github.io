@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Maraphont'; /*a name to be used later*/
+    src: url('/Maraphont.ttf'); /*URL to font*/
+}
+body {
+    background-color: powderblue;
+}
+h1 {
+    color: blue;
+}
+
+p {
+    color: black;
+    font-family: 'Maraphont';
+   font-size: 160%;
+}
