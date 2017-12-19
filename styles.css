@@ -8,9 +8,6 @@ body {
 h1 {
     color: blue;
 }
-
-p {
-    color: black;
-    font-family: 'Maraphont';
-   font-size: 160%;
+.marathon{font-family: 'Maraphont'; }
+p {color: black; font-size: 160%;
 }
