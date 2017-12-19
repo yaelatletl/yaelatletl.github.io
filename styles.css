@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Maraphont'; /*a name to be used later*/
-    src: url('/Maraphont.ttf'); /*URL to font*/
+    src: url('https://yaelatletl.github.io/Maraphont.ttf'); /*URL to font*/
 }
 body {
     background-color: powderblue;
