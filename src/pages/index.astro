@@ -1,0 +1,82 @@
+---
+// Component Imports
+import MainHead from '../components/MainHead.astro';
+import Button from '../components/Button/index.jsx';
+import Nav from '../components/Nav/index.jsx';
+import Footer from '../components/Footer/index.jsx';
+import PortfolioPreview from '../components/PortfolioPreview/index.jsx';
+import PublicationPreview from '../components/PublicationPreview/index.jsx';
+import './index_style.scss';
+// Data Fetching: List all Markdown posts in the repo.
+const projects = await Astro.glob('./project/**/*.md');
+const blog_posts = await Astro.glob('./blog posts/**/*.md');
+const publications = await Astro.glob('./publications/**/*.md');
+const featuredProject = projects[0];
+const featuredPublication = publications[0];
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<html lang="en">
+	<head>
+		<MainHead
+			title="Yael Atletl's Portfolio"/>
+		<style lang="scss">
+			
+		</style>
+	</head>
+	<body>
+		<Nav />
+		
+		<main class="wrapper mt4 mb4">
+			<div class="grid">
+
+				<div class="section">
+					<p class="bio">
+						<span>Yael Atletl</span> Computer science student in Mexico. 
+					</p>
+				</div>
+				<div class="section">
+					<p class="bio_pic">
+					<img src ="/assets/pp.jpeg"/> 
+					</p>
+				</div>
+			</div>
+
+				<div class="section">
+					<h3 class="sectionTitle"> Publications</h3>
+					<PublicationPreview project={featuredPublication} />
+					<div class="tac mt4">
+						<a href="/publications">
+							<Button>View All</Button>
+						</a>
+					</div>
+				</div>
+
+			<div class="grid">
+				<div class="section">
+					<h3 class="sectionTitle">Projects </h3>
+					<PortfolioPreview project={featuredProject} />
+					<div class="tac mt4">
+						<a href="/projects">
+							<Button>View All</Button>
+						</a>
+					</div>
+				</div>
+				<div class="section">
+					<h3 class="sectionTitle">Contributions </h3>
+					<PortfolioPreview project={featuredProject} />
+					<div class="tac mt4">
+						<a href="/projects">
+							<Button>View All</Button>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+
+		</main>
+		<Footer />
+	</body>
+</html>

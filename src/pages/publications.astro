@@ -1,0 +1,38 @@
+---
+import MainHead from '../components/MainHead.astro';
+import Footer from '../components/Footer/index.jsx';
+import Nav from '../components/Nav/index.jsx';
+import PublicationPreview from '../components/PublicationPreview/index.jsx';
+
+const publications = (await Astro.glob('./publications/**/*.md'))
+	.filter(({ frontmatter }) => !!frontmatter.publishDate)
+	.sort(
+		(a, b) =>
+			new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
+	);
+---
+
+<html lang="en">
+	<head>
+		<MainHead
+			title="Publications | Yael Atletl"
+			description="Learn about Yael Atletl's most recent publications"
+		/>
+		<style lang="scss">
+			.grid {
+				display: grid;
+				grid-gap: 3rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Nav />
+		<div class="wrapper">
+			<h1 class="title mt4 mb4">All Publications</h1>
+			<div class="grid">
+				{publications.map((project) => <div><PublicationPreview project={project}/></div>)}
+			</div>
+		</div>
+		<Footer/>
+	</body>
+</html>
