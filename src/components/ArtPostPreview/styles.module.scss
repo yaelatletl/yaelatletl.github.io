@@ -6,15 +6,14 @@
 
 .title {
 	padding-top: 1%;
-	width: 95%;
-	height: 100%;
+	padding-bottom: 1%;
 	display: flex;
-	align-items: left;
-	justify-content: left;
+	align-items: center;
+	justify-content: center;
 	margin: auto;
 	color: black;
 	flex-direction: row;
-	font-size: var(--f-u2);
+	font-size: var(--f-u4);
 	font-weight: 900;
 	letter-spacing: 0.0625em;
 }
@@ -35,7 +34,7 @@
 }
 
 .desc {
-	font-size: var(--f-u1);
+	font-size: var(--f-u6);
 	color: black;
 	line-height: 1.4;
 }
@@ -69,7 +68,17 @@
 		}
 	}
 }
-
+.popup {
+	font-size: medium;
+	margin: auto;
+	//center the text
+	text-align: center;
+	//center the popup
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 .linkInner {
 	padding: 0.375em 1em;
 	border: 2px solid rgba(255, 255, 255, 0);

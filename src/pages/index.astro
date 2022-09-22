@@ -7,12 +7,17 @@ import Footer from '../components/Footer/index.jsx';
 import PortfolioPreview from '../components/PortfolioPreview/index.jsx';
 import PublicationPreview from '../components/PublicationPreview/index.jsx';
 import './index_style.scss';
+import BlogPostPreview from '../components/BlogPostPreview';
 // Data Fetching: List all Markdown posts in the repo.
-const projects = await Astro.glob('./project/**/*.md');
-const blog_posts = await Astro.glob('./blog posts/**/*.md');
+const projects = await Astro.glob('./project/**/*.mdx');
+const blog_posts = await Astro.glob('./blog_posts/**/*.md');
 const publications = await Astro.glob('./publications/**/*.md');
+const contributions = await Astro.glob('./contributions/**/*.md');
 const featuredProject = projects[0];
-const featuredPublication = publications[0];
+const featuredPost = blog_posts[0];
+const featuredPost2 = blog_posts[1];
+const featuredPost3 = blog_posts[2];
+const featuredContribution = contributions[0];
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -22,9 +27,7 @@ const featuredPublication = publications[0];
 	<head>
 		<MainHead
 			title="Yael Atletl's Portfolio"/>
-		<style lang="scss">
-			
-		</style>
+		
 	</head>
 	<body>
 		<Nav />
@@ -34,7 +37,9 @@ const featuredPublication = publications[0];
 
 				<div class="section">
 					<p class="bio">
-						<span>Yael Atletl</span> Computer science student in Mexico. 
+						<span>Yael Atletl</span> 
+						I am a Computer Science student from Mexico. During my studies I have worked as a game developer for Moonwards and creating addons for the Godot game engine. 
+
 					</p>
 				</div>
 				<div class="section">
@@ -43,10 +48,12 @@ const featuredPublication = publications[0];
 					</p>
 				</div>
 			</div>
-
+			<div>Contact: </div>
 				<div class="section">
 					<h3 class="sectionTitle"> Publications</h3>
-					<PublicationPreview project={featuredPublication} />
+					<div class="grid2">
+					{publications.map((project) => <div><PublicationPreview project={project}/></div>)}
+					</div>
 					<div class="tac mt4">
 						<a href="/publications">
 							<Button>View All</Button>
@@ -56,7 +63,7 @@ const featuredPublication = publications[0];
 
 			<div class="grid">
 				<div class="section">
-					<h3 class="sectionTitle">Projects </h3>
+					<h3 class="sectionTitle"> Most recent project</h3>
 					<PortfolioPreview project={featuredProject} />
 					<div class="tac mt4">
 						<a href="/projects">
@@ -65,8 +72,8 @@ const featuredPublication = publications[0];
 					</div>
 				</div>
 				<div class="section">
-					<h3 class="sectionTitle">Contributions </h3>
-					<PortfolioPreview project={featuredProject} />
+					<h3 class="sectionTitle"> Most recent contributions</h3>
+					<PortfolioPreview project={featuredContribution} />
 					<div class="tac mt4">
 						<a href="/projects">
 							<Button>View All</Button>
@@ -74,6 +81,19 @@ const featuredPublication = publications[0];
 					</div>
 				</div>
 				
+				
+			</div>
+			<div class="section">
+				<h3 class="sectionTitle"> Blog Posts</h3>
+				
+				<div class="tac mt4">
+					<BlogPostPreview project={featuredPost} />
+					<BlogPostPreview project={featuredPost2} />
+					<BlogPostPreview project={featuredPost3} />
+						<a href="/blog_posts">
+							<Button>View All</Button>
+						</a>
+				</div>
 			</div>
 
 		</main>

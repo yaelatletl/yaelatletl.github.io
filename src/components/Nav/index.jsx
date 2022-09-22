@@ -10,12 +10,18 @@ function Nav() {
 			<a className={Styles.link} href="/projects">
 				Projects
 			</a>
+			<a className={Styles.link} href="/publications">
+				Publications
+			</a>
 
 			<a className={Styles.link} href="/cv.pdf">
 				CV
 			</a>
-			<a className={Styles.link} href="/blog posts">
+			<a className={Styles.link} href="/blog_posts">
 				Blog
+			</a>
+			<a className={Styles.link} href="/art">
+				Art
 			</a>
 			
 			<a className={Styles.social} href="https://twitter.com/810_dude">

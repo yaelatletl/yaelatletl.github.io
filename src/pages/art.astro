@@ -1,0 +1,31 @@
+---
+// Component Imports
+import MainHead from '../components/MainHead.astro';
+import Nav from '../components/Nav/index.jsx';
+import Footer from '../components/Footer/index.jsx';
+import ArtPostPreview from '../components/ArtPostPreview/index.jsx';
+import './index_style.scss';
+// Data Fetching: List all Markdown posts in the repo.
+const art = (await Astro.glob('./art_models/**/*.md'))
+
+---
+
+<html lang="en">
+	<head>
+		<MainHead
+			title="Art and 3d models"
+			description=""
+		/>
+		
+	</head>
+	<body>
+		<Nav />
+		<main class="wrapper mt4 mb4">
+			<h1>Art projects and 3d models</h1>
+			<div class="grid">
+				{art.map((project) => <div class="grid-item"><div class="section"><ArtPostPreview project={project}/></div></div>)}
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -4,7 +4,14 @@ import Footer from '../components/Footer/index.jsx';
 import Nav from '../components/Nav/index.jsx';
 import PortfolioPreview from '../components/PortfolioPreview/index.jsx';
 
-const projects = (await Astro.glob('./project/**/*.md'))
+const projects = (await Astro.glob('./project/**/*.mdx'))
+	.filter(({ frontmatter }) => !!frontmatter.publishDate)
+	.sort(
+		(a, b) =>
+			new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
+	);
+
+const contributions = (await Astro.glob('./contributions/**/*.md'))
 	.filter(({ frontmatter }) => !!frontmatter.publishDate)
 	.sort(
 		(a, b) =>
@@ -15,7 +22,7 @@ const projects = (await Astro.glob('./project/**/*.md'))
 <html lang="en">
 	<head>
 		<MainHead
-			title="All Projects | Yael Atletl"
+			title="Projects and contributions"
 			description="Learn about Yael Atletl's most recent projects"
 		/>
 		<style lang="scss">
@@ -31,6 +38,10 @@ const projects = (await Astro.glob('./project/**/*.md'))
 			<h1 class="title mt4 mb4">All Projects</h1>
 			<div class="grid">
 				{projects.map((project) => <PortfolioPreview project={project} />)}
+			</div>
+			<h1 class="title mt4 mb4">All Contributions</h1>
+			<div class="grid">
+				{contributions.map((project) => <PortfolioPreview project={project} />)}
 			</div>
 		</div>
 		<Footer />

@@ -1,0 +1,38 @@
+---
+import MainHead from '../components/MainHead.astro';
+import Footer from '../components/Footer/index.jsx';
+import Nav from '../components/Nav/index.jsx';
+import BlogPostPreview from '../components/BlogPostPreview/index.jsx';
+
+const projects = (await Astro.glob('./blog_posts/**/*.md'))
+	.filter(({ frontmatter }) => !!frontmatter.publishDate)
+	.sort(
+		(a, b) =>
+			new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
+	);
+---
+
+<html lang="en">
+	<head>
+		<MainHead
+			title="Blog"
+			description=""
+		/>
+		<style lang="scss">
+			.grid2 {
+				display: grid;
+				grid-gap: 3rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Nav />
+		<div class="wrapper_readable">
+			<h1 class="title mt4 mb4">Recent posts</h1>
+			<div class="grid2">
+				{projects.map((project) => <BlogPostPreview project={project} />)}
+			</div>
+		</div>
+		<Footer />
+	</body>
+</html>

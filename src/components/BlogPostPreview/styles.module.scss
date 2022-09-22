@@ -2,12 +2,22 @@
 	position: relative;
 	color: var(--t-bg);
 	background: white;
+	padding: 1%;
+}
+.grid {
+display: grid;
+grid-template-columns: 20% 80%;
+
+grid-column-gap: 0px;
+grid-row-gap: 0px;
 }
 
+.section1 { grid-area: 1 / 1 / 2 / 2; 
+background-position: center;}
+.section2 { grid-area: 1 / 2 / 2 / 3; }
 .title {
 	padding-top: 1%;
-	width: 95%;
-	height: 100%;
+	padding-left: 3%;
 	display: flex;
 	align-items: left;
 	justify-content: left;
@@ -21,6 +31,8 @@
 .authors {
 	text-transform: capitalize;
 	color: black;
+	text-align: left;
+	padding-bottom: 1%;
 	font-size: var(--f-u1);
 }
 .author {
@@ -36,8 +48,10 @@
 
 .desc {
 	font-size: var(--f-u1);
+	text-align:  left;
 	color: black;
 	line-height: 1.4;
+	margin: auto;
 }
 
 .link {

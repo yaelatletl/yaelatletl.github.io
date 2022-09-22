@@ -11,12 +11,13 @@ const { content } = Astro.props;
 		<MainHead title={content.title} description={content.description} />
 		<style lang="scss">
 			.hero {
-				padding: 8rem;
+				padding: 10rem;
 				display: flex;
 				background-color: var(--t-fg);
 				background-repeat: no-repeat;
-				background-size: cover;
-				min-height: 10vw;
+				background-position: 50% 50%;
+				background-size: contain;
+				min-height: 50vw;
 				color: black;
 				flex-direction: column;
 				align-items: center;
@@ -34,6 +35,9 @@ const { content } = Astro.props;
 			.title {
 				font-size: var(--f-u10);
 				font-weight: 900;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				letter-spacing: 0.0625em;
 			}
 
@@ -62,13 +66,14 @@ const { content } = Astro.props;
 	<body>
 		<Nav />
 		<i><h1 class="title">{content.title}</h1></i>
+		<h1 class="author"><span class="author">By: {content.author.map((t) => <b> {t}</b>)}</span></h1>
 		<header style={`background-image:url(${content.img})`} class="hero">
 			
 		</header>
 		<div class="leadIn">
 			
 			<div class="wrapper pt4 pb8 mb4 tac">
-				<h3 class="tagline"><b>Abstract</b></h3>
+				<h3 class="tagline"><b>Description</b></h3>
 				<h3 class="tagline">{content.description}</h3>
 				{content.tags.map((t) => <span class="tag">{t}</span>)}
 				
@@ -76,11 +81,11 @@ const { content } = Astro.props;
 			</div>
 		</div>
 		<div class="wrapper wrapper__readable">
-			<h1 class="author"><span class="author">Authors: {content.author.map((t) => <b> {t}</b>)}</span></h1>
+			
 			<div class="content"><slot /></div>
 		</div>
 		<div class="wrapper wrapper__readable">
-			<h2>Media </h2>
+			
 			
 		</div>
 		<Footer/>

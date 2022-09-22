@@ -1,5 +1,6 @@
 ---
 import MainHead from '../components/MainHead.astro';
+import Button from '../components/Button/index.jsx';
 import Footer from '../components/Footer/index.jsx';
 import Nav from '../components/Nav/index.jsx';
 
@@ -16,7 +17,7 @@ const { content } = Astro.props;
 				background-color: var(--t-fg);
 				background-repeat: no-repeat;
 				background-size: cover;
-				min-height: 10vw;
+				min-height: 25vw;
 				color: black;
 				flex-direction: column;
 				align-items: center;
@@ -38,7 +39,6 @@ const { content } = Astro.props;
 			}
 
 			.leadIn {
-				margin-top: 1%;
 				color: var(--t-bg);
 				background-color: var(--t-fg);
 			}
@@ -48,11 +48,7 @@ const { content } = Astro.props;
 				font-size: var(--f-u3);
 				line-height: 1.5;
 			}
-			.author {
-				color: black;
-				font-size: var(--f-u3);
-				line-height: 2.2;
-			}
+
 			.content {
 				font-size: var(--f-u1);
 				line-height: 2.2;
@@ -61,28 +57,23 @@ const { content } = Astro.props;
 	</head>
 	<body>
 		<Nav />
-		<i><h1 class="title">{content.title}</h1></i>
 		<header style={`background-image:url(${content.img})`} class="hero">
-			
+			<h1 class="title">{content.title}</h1>
 		</header>
 		<div class="leadIn">
-			
-			<div class="wrapper pt4 pb8 mb4 tac">
-				<h3 class="tagline"><b>Abstract</b></h3>
-				<h3 class="tagline">{content.description}</h3>
+			<div class="wrapper pt8 pb8 mb8 tac">
 				{content.tags.map((t) => <span class="tag">{t}</span>)}
-				
-				
+				<h3 class="tagline">{content.description}</h3>
 			</div>
 		</div>
 		<div class="wrapper wrapper__readable">
-			<h1 class="author"><span class="author">Authors: {content.author.map((t) => <b> {t}</b>)}</span></h1>
 			<div class="content"><slot /></div>
 		</div>
-		<div class="wrapper wrapper__readable">
-			<h2>Media </h2>
-			
-		</div>
-		<Footer/>
+		<footer class="tac mt6">
+			<a href="/projects">
+				<Button>View More</Button>
+			</a>
+		</footer>
+		<Footer />
 	</body>
 </html>
