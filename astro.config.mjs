@@ -5,5 +5,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://yaelatletl.github.io',
+  base: '/my-repo',
   integrations: [preact(), mdx()]
 });
