@@ -14,7 +14,7 @@ function Nav() {
 				Publications
 			</a>
 
-			<a className={Styles.link} href="/cv.pdf">
+			<a className={Styles.link} href="/assets/cv.pdf">
 				CV
 			</a>
 			<a className={Styles.link} href="/blog_posts">
